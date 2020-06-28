@@ -1,4 +1,4 @@
-# 3D - Numerical, Rejection Sampl., Importance Sampl.
+# 2D - Numerical, Rejection Sampl., Importance Sampl.
 library(mvtnorm)
 
 f = function(mat) {

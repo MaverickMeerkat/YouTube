@@ -35,9 +35,12 @@ wch = which(ll > logLik(fit)-qchisq(0.95, 1)/2)
 (ind.hi = wch[length(wch)])
 (beta.hi = beta[ind.hi])
 
-confint(fit)
-c(beta.lo, beta.hi)
-points(c(beta.lo, beta.hi), c(ll[ind.lo], ll[ind.hi]), col=2)
+confint(fit) # built in R function, that calculates Profile Likelihood CI for a glm fit
+c(beta.lo, beta.hi) # our manually calculated  Profile Likelihood CI
+# Add to the plot
+points(c(beta.lo, beta.hi), c(ll[ind.lo], ll[ind.hi]), col=2, pch=19)
+lines(c(beta.lo, beta.hi), c(ll[ind.lo], ll[ind.hi]), col=3)
+text(fit$coefficients[2], loglik(beta.lo)+.2, "95% CI")
 
 # Sanity check - see if the Likelihood Ratio test give 95% confidence for our values
 (beta.MLE = fit$coefficients[2])
